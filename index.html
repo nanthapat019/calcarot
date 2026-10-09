@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ef741b">
+<title>แคลคาร้อต — เครื่องคำนวณแคลอรีและสารอาหาร</title>
+<style>
+:root{--red:#ef741b;--red2:#ff9b35;--ink:#282019;--muted:#786b60;--line:#f0dfcf;--bg:#fff9f1;--card:#fff;--soft:#fff0df;--green:#16845b;--amber:#b66a0b;--shadow:0 12px 36px rgba(143,76,22,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.55}button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1160px;margin:auto;padding:0 22px}.topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:1.2rem;letter-spacing:-.4px}.logo{width:39px;height:39px;border-radius:13px;background:var(--red);color:white;display:grid;place-items:center;font-weight:900;font-size:1.25rem}.brand span em{color:var(--red);font-style:normal}.navnote{font-size:.86rem;color:var(--muted)}.hero{padding:46px 0 28px;background:radial-gradient(ellipse at 85% 0%,#ffe4bf 0,transparent 42%),linear-gradient(180deg,#fff 0%,var(--bg) 100%)}.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--red);font-weight:750;font-size:.83rem;background:#fff0df;border:1px solid #f9d2a7;padding:6px 11px;border-radius:99px}.hero h1{font-size:clamp(2rem,4vw,3.3rem);line-height:1.13;letter-spacing:-1.4px;margin:17px 0 12px;max-width:760px}.hero h1 span{color:var(--red)}.hero p{max-width:690px;color:var(--muted);margin:0;font-size:1.02rem}.layout{display:grid;grid-template-columns:370px 1fr;gap:22px;align-items:start;padding:18px 0 54px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}.cardhead{padding:20px 22px 0}.cardhead h2,.cardhead h3{margin:0;font-size:1.08rem}.sub{color:var(--muted);font-size:.87rem;margin-top:4px}.formbody{padding:18px 22px 22px}.field{margin-bottom:15px}.field label{display:flex;justify-content:space-between;gap:8px;font-weight:700;font-size:.9rem;margin-bottom:7px}.hint{color:var(--muted);font-weight:450;font-size:.77rem}.inputwrap{position:relative}.inputwrap input,.field select{width:100%;border:1px solid #e5d8da;border-radius:11px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}.inputwrap input:focus,.field select:focus{border-color:var(--red);box-shadow:0 0 0 3px #ef741b14}.unit{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.84rem;pointer-events:none}.inputwrap input{padding-right:54px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}.seg{display:grid;grid-template-columns:1fr 1fr;gap:7px}.seg button{border:1px solid #e5d8da;background:#fff;padding:10px;border-radius:10px;color:#5d5355;font-weight:650}.seg button.active{background:var(--soft);border-color:#f4b16c;color:var(--red)}.goals{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.goals button{padding:10px 4px;font-size:.83rem}.primary{border:0;background:var(--red);color:#fff;padding:13px 16px;border-radius:12px;font-weight:800;width:100%;box-shadow:0 7px 16px #ef741b25;transition:.15s}.primary:hover{background:#d95a0b;transform:translateY(-1px)}.smallnote{font-size:.77rem;color:var(--muted);margin:12px 0 0}.results{display:grid;gap:18px}.result-top{background:linear-gradient(135deg,#e96512,#ff9b35);color:#fff;border:0;padding:24px}.result-top .kicker{font-size:.86rem;color:#ffe3e6}.calories{display:flex;align-items:baseline;gap:8px;margin:4px 0 14px}.calories strong{font-size:clamp(2.5rem,5vw,3.5rem);line-height:1;letter-spacing:-1.8px}.calories span{opacity:.9}.resulttopfoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.88rem;color:#ffe3e6}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.macro{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}.macrohead{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);font-weight:700}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.macro strong{display:block;font-size:1.8rem;letter-spacing:-.7px;margin:7px 0 0}.macro small{color:var(--muted)}.bar{height:7px;background:#f0e8e9;border-radius:99px;overflow:hidden;margin-top:12px}.bar span{height:100%;display:block;border-radius:99px}.sectioncard{padding:20px}.sectiontitle{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}.sectiontitle h2{margin:0;font-size:1.08rem}.sectiontitle p{margin:4px 0 0;color:var(--muted);font-size:.84rem}.pill{font-size:.75rem;border-radius:99px;background:#f7f1f2;color:#6b5c5e;padding:5px 9px;white-space:nowrap}.foodtable{width:100%;border-collapse:collapse;font-size:.88rem}.foodtable th{text-align:left;color:var(--muted);font-size:.78rem;font-weight:700;background:#fff8ef}.foodtable th,.foodtable td{padding:11px 9px;border-bottom:1px solid #f1e7e8}.foodtable td:last-child,.foodtable th:last-child{text-align:right}.foodtable tr:last-child td{border-bottom:0}.foodname{font-weight:750}.fooddesc{font-size:.76rem;color:var(--muted)}.portion{white-space:nowrap;font-weight:700}.mealgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meal{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff}.meal .emoji{font-size:1.35rem}.meal h3{margin:7px 0 3px;font-size:.9rem}.meal p{font-size:.78rem;color:var(--muted);margin:0}.meal strong{display:block;color:var(--red);margin-top:8px;font-size:.86rem}.foodtools{display:grid;grid-template-columns:1fr 120px auto;gap:9px;align-items:end}.foodtools label{display:block;font-size:.8rem;font-weight:700;margin-bottom:6px}.foodtools select,.foodtools input{width:100%;padding:10px;border:1px solid #e5d8da;border-radius:10px;background:#fff;min-width:0}.secondary{border:1px solid #e4c8cc;background:#fff3e6;color:var(--red);font-weight:750;border-radius:10px;padding:10px 13px}.foodsummary{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:15px;padding:14px;background:#fff3e6;border-radius:12px}.foodsummary strong{color:var(--red)}.foodlist{margin:12px 0 0;padding:0;list-style:none}.foodlist li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f1e7e8;font-size:.87rem}.foodlist li:last-child{border-bottom:0}.remove{border:0;background:transparent;color:#a49a9c;font-size:1.1rem;padding:3px 7px}.formula{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formula div{background:#fff8ef;border:1px solid var(--line);padding:14px;border-radius:12px}.formula b{display:block;font-size:.88rem}.formula code{display:block;color:#bd520d;font-family:inherit;font-size:.82rem;margin-top:7px;white-space:normal}.formula p{margin:7px 0 0;color:var(--muted);font-size:.8rem}.warning{border:1px solid #f3d9ad;background:#fff9ed;color:#71501d;padding:15px;border-radius:13px;font-size:.82rem}.warning b{display:block;margin-bottom:4px}.footer{border-top:1px solid var(--line);padding:22px 0 32px;color:var(--muted);font-size:.8rem}.empty{color:var(--muted);font-size:.85rem;padding:10px 0}.hide{display:none!important}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.formcard{position:static}.hero{padding-top:32px}.navnote{display:none}}
+@media(max-width:580px){.wrap{padding:0 14px}.nav{height:62px}.hero h1{font-size:2.25rem}.layout{padding-top:10px;gap:14px}.statgrid{gap:7px}.macro{padding:12px 10px}.macro strong{font-size:1.45rem}.macrohead{font-size:.75rem;gap:5px}.mealgrid{grid-template-columns:1fr}.formula{grid-template-columns:1fr}.foodtools{grid-template-columns:1fr 95px}.foodtools .secondary{grid-column:1/-1}.sectioncard{padding:16px}.formbody{padding:16px}.cardhead{padding:18px 16px 0}.foodtable th,.foodtable td{padding:9px 5px;font-size:.8rem}.fooddesc{font-size:.7rem}.result-top{padding:21px}.twocol{gap:9px}}
+
+
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap nav"><div class="brand"><div class="logo">🥕</div><span>แคลคาร้อต<em> . DAILY</em></span></div><a class="admin-nav-btn" href="admin.html" style="text-decoration:none">⚙ หลังบ้าน</a></div></header>
+<section class="hero"><div class="wrap"><div class="eyebrow">🥕 สุขภาพดี เริ่มจากเข้าใจตัวเอง</div><h1>แคลคาร้อต<br><span>คำนวณให้พอดี กินดีทุกวัน</span></h1><p>ผู้ช่วยคำนวณแคลอรีและสารอาหารสไตล์แครอทสดใส พร้อมตัวอย่างอาหารไทย วางแผนลดไขมัน เพิ่มกล้ามเนื้อ หรือรักษาน้ำหนักได้ง่ายขึ้น</p></div></section>
+<main class="wrap layout">
+<aside class="card formcard"><div class="cardhead"><h2>ข้อมูลของคุณ</h2><div class="sub">กรอกข้อมูลเพื่อคำนวณเป้าหมายรายวัน</div></div><form class="formbody" id="calcForm">
+<div class="twocol"><div class="field"><label for="weight">น้ำหนัก <span class="hint">กก.</span></label><div class="inputwrap"><input id="weight" type="number" min="25" max="300" step=".1" value="65" required><span class="unit">กก.</span></div></div><div class="field"><label for="height">ส่วนสูง <span class="hint">ซม.</span></label><div class="inputwrap"><input id="height" type="number" min="100" max="230" value="170" required><span class="unit">ซม.</span></div></div></div>
+<div class="twocol"><div class="field"><label for="age">อายุ</label><div class="inputwrap"><input id="age" type="number" min="18" max="100" value="25" required><span class="unit">ปี</span></div></div><div class="field"><label>เพศสำหรับสูตร</label><div class="seg"><button type="button" data-sex="male" class="active">ชาย</button><button type="button" data-sex="female">หญิง</button></div><input type="hidden" id="sex" value="male"></div></div>
+<div class="field"><label for="activity">กิจกรรมในชีวิตประจำวัน</label><select id="activity"><option value="1.2">นั่งเป็นส่วนใหญ่ ไม่ค่อยออกกำลัง</option><option value="1.375">ออกกำลังเบา ๆ 1–3 วัน/สัปดาห์</option><option value="1.55" selected>ออกกำลังปานกลาง 3–5 วัน/สัปดาห์</option><option value="1.725">ออกกำลังหนัก 6–7 วัน/สัปดาห์</option><option value="1.9">กิจกรรมหนักมาก / ใช้แรงงาน</option></select></div>
+<div class="field"><label>เป้าหมายของคุณ</label><div class="seg goals"><button type="button" data-goal="lose">ลดไขมัน</button><button type="button" data-goal="maintain" class="active">รักษาน้ำหนัก</button><button type="button" data-goal="gain">เพิ่มกล้ามเนื้อ</button></div><input type="hidden" id="goal" value="maintain"></div>
+<div class="field"><label for="protein">โปรตีนที่ต้องการ <span class="hint">กรัม/กก./วัน</span></label><select id="protein"><option value="1.2">1.2 — กิจกรรมทั่วไป</option><option value="1.6" selected>1.6 — ออกกำลัง / เพิ่มกล้ามเนื้อ</option><option value="2">2.0 — เน้นรักษามวลกล้ามเนื้อ</option></select></div>
+<button class="primary" type="submit">คำนวณเป้าหมายของฉัน ↗</button><p class="smallnote">ค่าที่ได้เป็นค่าประมาณ ใช้เป็นจุดเริ่มต้นและปรับตามผลจริงของร่างกาย</p>
+</form></aside>
+<section class="results">
+<div class="card result-top"><div class="kicker">พลังงานเป้าหมายต่อวัน</div><div class="calories"><strong id="targetCal">2,300</strong><span>kcal / วัน</span></div><div class="resulttopfoot"><span>พลังงานที่ใช้โดยประมาณ (TDEE): <b id="tdee">2,300 kcal</b></span><span id="goalText">เป้าหมาย: รักษาน้ำหนัก</span></div></div>
+<div class="statgrid">
+<div class="macro"><div class="macrohead"><i class="dot" style="background:#ef741b"></i>โปรตีน</div><strong id="proteinG">104 <small>g</small></strong><small id="proteinK">416 kcal</small><div class="bar"><span id="proteinBar" style="width:25%;background:#ef741b"></span></div></div>
+<div class="macro"><div class="macrohead"><i class="dot" style="background:#e7a52c"></i>คาร์โบไฮเดรต</div><strong id="carbG">290 <small>g</small></strong><small id="carbK">1,160 kcal</small><div class="bar"><span id="carbBar" style="width:50%;background:#e7a52c"></span></div></div>
+<div class="macro"><div class="macrohead"><i class="dot" style="background:#4387db"></i>ไขมัน</div><strong id="fatG">80 <small>g</small></strong><small id="fatK">720 kcal</small><div class="bar"><span id="fatBar" style="width:25%;background:#4387db"></span></div></div>
+</div>
+<div class="card sectioncard"><div class="sectiontitle"><div><h2>ตัวอย่างปริมาณอาหารไทยต่อวัน</h2><p>ตัวอย่างเพื่อช่วยวางแผน ไม่ใช่เมนูบังคับ</p></div><span class="pill">ปรับได้ตามชอบ</span></div>
+<table class="foodtable"><thead><tr><th>อาหาร</th><th>ปริมาณตัวอย่าง</th><th>พลังงาน</th></tr></thead><tbody id="portionRows"></tbody></table>
+<p class="smallnote">ปริมาณจริงขึ้นกับสูตรอาหาร น้ำมัน เครื่องปรุง และวิธีปรุง ตัวเลขเป็นค่าประมาณจากอาหารทั่วไป</p></div>
+<div class="card sectioncard"><div class="sectiontitle"><div><h2>ไอเดียแบ่งมื้ออาหาร</h2><p>กระจายพลังงานให้เหมาะกับตารางชีวิต</p></div></div><div class="mealgrid">
+<div class="meal"><div class="emoji">🍳</div><h3>มื้อเช้า</h3><p>ไข่ + ข้าว / ขนมปัง + ผลไม้</p><strong id="breakfast">25% ของพลังงาน</strong></div>
+<div class="meal"><div class="emoji">🍚</div><h3>มื้อกลางวัน</h3><p>ข้าว + เนื้อสัตว์ไม่ติดมัน + ผัก</p><strong id="lunch">35% ของพลังงาน</strong></div>
+<div class="meal"><div class="emoji">🥗</div><h3>มื้อเย็นและของว่าง</h3><p>โปรตีน + ผัก + คาร์บตามเป้าหมาย</p><strong id="dinner">40% ของพลังงาน</strong></div>
+</div></div>
+<div class="card sectioncard"><div class="sectiontitle"><div><h2>คำนวณสารอาหารจากอาหารที่กิน</h2><p>เลือกอาหารและใส่ปริมาณ เพื่อรวมแคลอรีและสารอาหารของมื้อนั้น</p></div></div>
+<div class="foodtools"><div><label for="foodSelect">เลือกอาหาร</label><select id="foodSelect"></select></div><div><label for="foodQty">ปริมาณ (กรัม)</label><input id="foodQty" type="number" min="1" max="3000" value="100"></div><button class="secondary" id="addFood" type="button">+ เพิ่มอาหาร</button></div>
+<ul class="foodlist" id="foodList"><li class="empty">ยังไม่มีรายการอาหารที่บันทึก</li></ul>
+<div class="foodsummary"><span>รวมทั้งหมด <strong id="sumCal">0 kcal</strong></span><span>โปรตีน <strong id="sumP">0 g</strong></span><span>คาร์บ <strong id="sumC">0 g</strong></span><span>ไขมัน <strong id="sumF">0 g</strong></span></div>
+<button class="secondary" id="clearFood" type="button" style="margin-top:12px">ล้างรายการอาหาร</button></div>
+<div class="card sectioncard"><div class="sectiontitle"><div><h2>สูตรคำนวณที่ใช้</h2><p>เปิดเผยหลักการ เพื่อให้เข้าใจที่มาของตัวเลข</p></div></div><div class="formula">
+<div><b>1. BMR — พลังงานพื้นฐาน</b><code id="bmrFormula">ชาย: 10 × น้ำหนัก + 6.25 × ส่วนสูง − 5 × อายุ + 5</code><p>ใช้สมการ Mifflin–St Jeor เพื่อประมาณพลังงานขณะพัก</p></div>
+<div><b>2. TDEE — พลังงานที่ใช้ต่อวัน</b><code>BMR × ตัวคูณกิจกรรม</code><p>ค่าจริงอาจแตกต่างตามกิจกรรมและสรีรวิทยาของแต่ละคน</p></div>
+<div><b>3. พลังงานตามเป้าหมาย</b><code id="goalFormula">TDEE สำหรับรักษาน้ำหนัก</code><p>การลดหรือเพิ่มพลังงานเป็นแนวทางประมาณ ไม่ควรหักโหม</p></div>
+<div><b>4. การแปลงพลังงานสารอาหาร</b><code>โปรตีน 4 • คาร์โบไฮเดรต 4 • ไขมัน 9 kcal/กรัม</code><p>ระบบคำนวณคาร์โบไฮเดรตจากพลังงานที่เหลือหลังจัดสรรโปรตีนและไขมัน</p></div>
+</div></div>
+<div class="warning"><b>ข้อควรทราบด้านโภชนาการ</b>เว็บนี้ให้ข้อมูลเพื่อการศึกษาและวางแผนทั่วไป ไม่ใช่การวินิจฉัยหรือคำแนะนำเฉพาะบุคคล ผู้ที่อายุต่ำกว่า 18 ปี ตั้งครรภ์ มีโรคประจำตัว หรือมีประวัติความผิดปกติด้านการกิน ควรปรึกษาแพทย์หรือนักกำหนดอาหารก่อนปรับอาหารอย่างจริงจัง หากน้ำหนักหรือพลังงานเปลี่ยนผิดปกติ ควรประเมินใหม่กับผู้เชี่ยวชาญ</div>
+</section></main>
+
+<div id="consentBanner" class="consent-banner hide" role="dialog" aria-label="การเก็บสถิติการใช้งาน"><p><b>ช่วยปรับปรุงแคลคาร้อต</b><br>อนุญาตให้ส่งสถิติการเข้าชมและข้อมูลโภชนาการที่คำนวณไปยังฐานข้อมูลส่วนกลางเพื่อทำสถิติหรือไม่?</p><div class="consent-actions"><button class="admin-btn" id="consentNo" type="button">ไม่อนุญาต</button><button class="admin-btn" id="consentYes" type="button">อนุญาต</button></div></div>
+
+<footer class="footer"><div class="wrap">แคลคาร้อต DAILY • คำนวณเพื่อเป็นแนวทางเท่านั้น • ข้อมูลอาหารเป็นค่าประมาณและอาจแตกต่างตามยี่ห้อและวิธีปรุง</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const $=id=>document.getElementById(id);
+let foods=[
+{name:"ข้าวสวยสุก",unit:"100 กรัม",cal:130,p:2.7,c:28.2,f:.3},
+{name:"อกไก่สุกไม่ติดหนัง",unit:"100 กรัม",cal:165,p:31,c:0,f:3.6},
+{name:"ไข่ไก่",unit:"100 กรัม",cal:143,p:12.6,c:.7,f:9.5},
+{name:"ปลานิลสุก",unit:"100 กรัม",cal:128,p:26,c:0,f:2.7},
+{name:"เต้าหู้ขาว",unit:"100 กรัม",cal:76,p:8,c:1.9,f:4.8},
+{name:"นมจืด",unit:"100 มล.",cal:61,p:3.2,c:4.8,f:3.3},
+{name:"กล้วยหอม",unit:"100 กรัม",cal:89,p:1.1,c:22.8,f:.3},
+{name:"ข้าวเหนียวสุก",unit:"100 กรัม",cal:169,p:3.5,c:37.5,f:.4},
+{name:"หมูสันในสุก",unit:"100 กรัม",cal:143,p:26,c:0,f:3.5},
+{name:"ผักบุ้งลวก",unit:"100 กรัม",cal:20,p:2.6,c:3.1,f:.2},
+{name:"มันเทศนึ่ง",unit:"100 กรัม",cal:90,p:2,c:20.7,f:.1},
+{name:"ถั่วลิสง",unit:"100 กรัม",cal:567,p:25.8,c:16.1,f:49.2},
+{name:"ข้าวผัด (ค่ากลาง)",unit:"100 กรัม",cal:180,p:4,c:27,f:6},
+{name:"ผัดกะเพราไก่ (ค่ากลาง)",unit:"100 กรัม",cal:190,p:12,c:10,f:11}
+];
+let chosenFoods=[];
+function fmt(n){return Math.round(n).toLocaleString("th-TH")}
+function dec(n){return (Math.round(n*10)/10).toLocaleString("th-TH")}
+function getCalc(){
+ let w=+ $("weight").value,h=+$("height").value,a=+$("age").value,sex=$("sex").value,act=+$("activity").value,goal=$("goal").value,pr=+$("protein").value;
+ if(!w||!h||!a||w<25||w>300||h<100||h>230||a<18||a>100){alert("กรุณาตรวจสอบน้ำหนัก ส่วนสูง และอายุ (ตัวอย่างการคำนวณนี้รองรับอายุ 18–100 ปี)");return null}
+ let bmr=10*w+6.25*h-5*a+(sex==="male"?5:-161),tdee=bmr*act;
+ let target=tdee*(goal==="lose"?.85:goal==="gain"?1.08:1);
+ let pg=Math.round(w*pr),fg=Math.round(target*.27/9),cg=Math.max(0,Math.round((target-pg*4-fg*9)/4));
+ return {w,h,a,sex,act,goal,pr,bmr,tdee,target,pg,fg,cg};
+}
+function render(){
+ let d=getCalc();if(!d)return;
+ $("targetCal").textContent=fmt(d.target);$("tdee").textContent=fmt(d.tdee)+" kcal";
+ $("goalText").textContent="เป้าหมาย: "+({lose:"ลดไขมัน (ลดพลังงานประมาณ 15%)",maintain:"รักษาน้ำหนัก",gain:"เพิ่มกล้ามเนื้อ (เพิ่มพลังงานประมาณ 8%)"}[d.goal]);
+ $("proteinG").innerHTML=fmt(d.pg)+" <small>g</small>";$("carbG").innerHTML=fmt(d.cg)+" <small>g</small>";$("fatG").innerHTML=fmt(d.fg)+" <small>g</small>";
+ $("proteinK").textContent=fmt(d.pg*4)+" kcal";$("carbK").textContent=fmt(d.cg*4)+" kcal";$("fatK").textContent=fmt(d.fg*9)+" kcal";
+ let total=d.pg*4+d.cg*4+d.fg*9;
+ $("proteinBar").style.width=(d.pg*4/total*100)+"%";$("carbBar").style.width=(d.cg*4/total*100)+"%";$("fatBar").style.width=(d.fg*9/total*100)+"%";
+ $("bmrFormula").textContent=(d.sex==="male"?"ชาย: 10 × น้ำหนัก + 6.25 × ส่วนสูง − 5 × อายุ + 5":"หญิง: 10 × น้ำหนัก + 6.25 × ส่วนสูง − 5 × อายุ − 161");
+ $("goalFormula").textContent=d.goal==="lose"?"TDEE × 0.85 (ลดประมาณ 15%)":d.goal==="gain"?"TDEE × 1.08 (เพิ่มประมาณ 8%)":"TDEE (รักษาน้ำหนัก)";
+ let portions=[
+ ["ข้าวสวยสุก",Math.round(d.cg*.45/28.2*100),"แหล่งคาร์โบไฮเดรต"],
+ ["อกไก่สุกไม่ติดหนัง",Math.round(d.pg*.5/31*100),"แหล่งโปรตีน"],
+ ["ไข่ไก่",Math.round(d.pg*.2/12.6*100),"โปรตีนและไขมัน"],
+ ["ผักบุ้งลวก",200,"ผักและใยอาหาร"],
+ ["กล้วยหอม",100,"ผลไม้"]
+ ];
+ $("portionRows").innerHTML=portions.map(x=>{let f=foods.find(z=>z.name===x[0]),q=x[1],cal=f.cal*q/100;return `<tr><td><div class="foodname">${x[0]}</div><div class="fooddesc">${x[2]}</div></td><td class="portion">${fmt(q)} กรัม</td><td>${fmt(cal)} kcal</td></tr>`}).join("");
+ $("breakfast").textContent=fmt(d.target*.25)+" kcal";$("lunch").textContent=fmt(d.target*.35)+" kcal";$("dinner").textContent=fmt(d.target*.4)+" kcal";
+}
+function populateFoods(){$("foodSelect").innerHTML=foods.map((f,i)=>`<option value="${i}">${f.name} (${f.unit})</option>`).join("")}
+function renderFoodList(){
+ const list=$("foodList");
+ if(!chosenFoods.length){list.innerHTML='<li class="empty">ยังไม่มีรายการอาหารที่บันทึก</li>'}
+ else list.innerHTML=chosenFoods.map((x,i)=>`<li><span><b>${x.name}</b><br><span class="fooddesc">${fmt(x.qty)} กรัม • ${fmt(x.cal)} kcal • P ${dec(x.p)}g / C ${dec(x.c)}g / F ${dec(x.f)}g</span></span><button class="remove" data-remove="${i}" aria-label="ลบอาหาร">×</button></li>`).join("");
+ let sums=chosenFoods.reduce((a,x)=>({cal:a.cal+x.cal,p:a.p+x.p,c:a.c+x.c,f:a.f+x.f}),{cal:0,p:0,c:0,f:0});
+ $("sumCal").textContent=fmt(sums.cal)+" kcal";$("sumP").textContent=dec(sums.p)+" g";$("sumC").textContent=dec(sums.c)+" g";$("sumF").textContent=dec(sums.f)+" g";
+}
+document.querySelectorAll("[data-sex]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-sex]").forEach(x=>x.classList.toggle("active",x===b));$("sex").value=b.dataset.sex;render()}));
+document.querySelectorAll("[data-goal]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-goal]").forEach(x=>x.classList.toggle("active",x===b));$("goal").value=b.dataset.goal;render()}));
+$("calcForm").addEventListener("submit",e=>{e.preventDefault();render()});
+["weight","height","age","activity","protein"].forEach(id=>$(id).addEventListener("change",render));
+$("addFood").addEventListener("click",()=>{let f=foods[+$("foodSelect").value],qty=+$("foodQty").value;if(!qty||qty<1||qty>3000){alert("กรุณาใส่ปริมาณ 1–3,000 กรัม");return}chosenFoods.push({name:f.name,qty,cal:f.cal*qty/100,p:f.p*qty/100,c:f.c*qty/100,f:f.f*qty/100});renderFoodList()});
+$("foodList").addEventListener("click",e=>{let b=e.target.closest("[data-remove]");if(b){chosenFoods.splice(+b.dataset.remove,1);renderFoodList()}});
+$("clearFood").addEventListener("click",()=>{chosenFoods=[];renderFoodList()});
+populateFoods();render();renderFoodList();
+
+// Supabase shared analytics. Set the project URL and publishable/anon key below.
+const SUPABASE_URL = 'https://xqlirtkwxjqcwjjvbvtz.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_ecZLAA0W-9qVrF6lUi2myg_CHkDulTs';
+const supabaseReady = !!(window.supabase && SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('PASTE_') && !SUPABASE_ANON_KEY.includes('PASTE_'));
+const db = supabaseReady ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+const CONSENT_KEY='calcarrot_analytics_consent_v1', GUEST_KEY='calcarrot_guest_id_v1';
+function guestId(){let id=localStorage.getItem(GUEST_KEY);if(!id){id='guest-'+(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10));localStorage.setItem(GUEST_KEY,id)}return id}
+function analyticsEnabled(){return localStorage.getItem(CONSENT_KEY)==='yes'}
+async function logEvent(type,details={}){if(!analyticsEnabled()||!db)return;const row={guest_id:guestId(),event_type:type,details};const {error}=await db.from('analytics_events').insert(row);if(error)console.warn('Supabase event insert failed:',error.message)}
+async function logNutrition(){if(!analyticsEnabled()||!db)return;const d=getCalc();if(!d)return;const row={guest_id:guestId(),weight_kg:d.w,height_cm:d.h,age_years:d.a,sex:d.sex,activity_level:String(d.act),goal:d.goal,tdee_kcal:Math.round(d.tdee),target_kcal:Math.round(d.target),protein_g:d.pg,carbs_g:d.cg,fat_g:d.fg,food_count:chosenFoods.length,food_calories:Math.round(chosenFoods.reduce((s,x)=>s+x.cal,0))};const {error}=await db.from('nutrition_calculations').insert(row);if(error)console.warn('Supabase nutrition insert failed:',error.message);else await logEvent('calculation',{goal:d.goal,calories:Math.round(d.target)})}
+$('consentYes').addEventListener('click',()=>{localStorage.setItem(CONSENT_KEY,'yes');$('consentBanner').classList.add('hide');logEvent('page_view',{path:location.pathname})});
+$('consentNo').addEventListener('click',()=>{localStorage.setItem(CONSENT_KEY,'no');$('consentBanner').classList.add('hide')});
+if(!localStorage.getItem(CONSENT_KEY))$('consentBanner').classList.remove('hide');else if(analyticsEnabled())logEvent('page_view',{path:location.pathname});
+$('calcForm').addEventListener('submit',()=>setTimeout(logNutrition,0));
+$('addFood').addEventListener('click',()=>setTimeout(()=>logEvent('food_add',{food:$('foodSelect').selectedOptions[0]?.text||'',quantity:$('foodQty').value}),0));
+$('clearFood').addEventListener('click',()=>logEvent('food_clear',{}));
+if(!supabaseReady)console.warn('แคลคาร้อต: กรุณาตั้งค่า SUPABASE_URL และ SUPABASE_ANON_KEY ใน index.html ก่อนเผยแพร่');
+</script>
+</body>
+</html>
